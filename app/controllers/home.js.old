@@ -1,0 +1,11 @@
+module.exports = function() {
+var controller = {};
+controller.index = function(req, res) {
+	var pessoa = {nome: 'Serumaninho lindo!',
+		      sexo: 'machão',
+		      frase: 'É nóis que voa bruxão' 	
+                     }
+	res.render('index', pessoa);
+};
+return controller;
+}

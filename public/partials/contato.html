@@ -1,0 +1,33 @@
+<div>
+    <div class="jumbotron">
+        <h1>Contatooh</h1>
+        <span class="text-center" ng-show="mensagem.texto">
+            {{mensagem.texto}}
+        </span>
+    </div>
+    <form role="form" ng-submit="salvar()">
+        <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input name="nome" required id="nome" type="text" class="form-control" ng-model="contato.nome" />
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <div class="input-group">
+                <span class="input-group-addon">@</span>
+                <input type="email" class="form-control" id="email"
+                       placeholder="email@exemplo.com" name="email"
+                       ng-model="contato.email" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="emergencia">Emergência</label>
+            <select id="emergencia"
+                    class="form-control"
+                ng-model="contato.emergencia"
+                ng-options="contato._id as contato.nome for contato in contatos">
+            </select>
+        </div>
+        <button class="btn btn-default" type="submit">Salvar</button>
+        <a ng-href="#/" meu-focus evento="contatoSalvo" class="btn btn-default">Voltar</a> 
+    </form>
+</div>

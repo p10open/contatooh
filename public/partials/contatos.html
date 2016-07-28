@@ -1,0 +1,38 @@
+<div class="jumbotron">
+    <h1>Contatooh</h1>
+    <p ng-show="mensagem.length" class="text-center">
+        {{mensagem.texto}}
+    </p>
+</div>
+<a ng-href="#/contato" class="btn btn-primary">
+    Novo
+</a>
+<input type="search" ng-model="filtro"  placeholder="parte do nome">
+<p ng-show="contatos.length" class="text-info">Contatos cadastrados: {{contatos.length}}</p>
+<p ng-hide="contatos.length" class="text-info">
+    Nao existem contatos!
+</p>
+<meu-painel titulo="Listagem de Contatos">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <tr>
+                <th>NOME</th>
+                <th>E-MAIL</th>
+                <th>Emergência</th>
+                <th class="text-center">Ação</th>
+            </tr>
+            <tr ng-repeat="contato in contatos | filter: filtro">
+                <td>
+                    <a ng-href="#/contato/{{contato._id}}">{{contato.nome}}</a>
+                </td>
+                <td>{{contato.email}}</td>
+                <td>{{contato.emergencia.nome}}</td>
+                <td class="text-center">
+                    <meu-botao-aviso nome="Remover"
+                                     acao="remover(contato)">
+                    </meu-botao-aviso>
+                </td>
+            </tr>
+        </table>
+    </div>
+</meu-painel>
